@@ -1,0 +1,377 @@
+[{
+  "id": 1,
+  "modelo": "DIESEL 608A ",
+  "precio": "14200.00",
+  "imagen": "./img/productos/hombre/DIESEL 608A (HOMBRE).jpg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 2,
+  "modelo": "DIESEL 6300 (HOMBRE)",
+  "precio": "13900.00",
+  "imagen": "./img/productos/hombre/DIESEL 6300 (HOMBRE).jpg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 3,
+  "modelo": "EUROPA EU-4014 (HOMBRE) ",
+  "precio": "9300.00",
+  "imagen": "./img/productos/hombre/EUROPA EU-4014 (HOMBRE).jpg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 4,
+  "modelo": "EUROPA EU-4902 (HOMBRE)",
+  "precio": "7800.00",
+  "imagen": "./img/productos/hombre/EUROPA EU-4902 (HOMBRE).jpg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 5,
+  "modelo": "KOSIUKO 797C (HOMBRE)",
+  "precio": "17900.00",
+  "imagen": "./img/productos/hombre/KOSIUKO 797C (HOMBRE).jpg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 6,
+  "modelo": "MANGO CAUCHO M1512 (HOMBRE) ",
+  "precio": "6900.00",
+  "imagen": "./img/productos/hombre/MANGO CAUCHO M1512 (HOMBRE).jpg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 7,
+  "modelo": "MANGO M1580 (HOMBRE) ",
+  "precio": "11300.00",
+  "imagen": "./img/productos/hombre/MANGO M1580 (HOMBRE).jpg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 8,
+  "modelo": "MANGO M1640 (HOMBRE)",
+  "precio": "11200.00",
+  "imagen": "./img/productos/hombre/MANGO M1640 (HOMBRE).jpg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 9,
+  "modelo": "RELOJ CASIO EFV-540D",
+  "precio": "40200.00",
+  "imagen": "./img/productos/hombre/RELOJ CASIO EFV-540D.jpeg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 10,
+  "modelo": "RELOJ CASIO EFV-600D ",
+  "precio": "42300.00",
+  "imagen": "./img/productos/hombre/RELOJ CASIO EFV-600D.jpeg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 11,
+  "modelo": "RELOJ CASIO GA-140 (HOMBRE) ",
+  "precio": "43600.00",
+  "imagen": "./img/productos/hombre/RELOJ CASIO GA-140 (HOMBRE).jpeg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 12,
+  "modelo": "RELOJ CASIO MTP-1335D ",
+  "precio": "26600.00",
+  "imagen": "./img/productos/hombre/RELOJ CASIO MTP-1335D.jpeg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 13,
+  "modelo": "RELOJ CASIO W-735H (HOMBRE) ",
+  "precio": "20800.00",
+  "imagen": "./img/productos/hombre/RELOJ CASIO W-735H (HOMBRE).jpg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 14,
+  "modelo": "RELOJ DE HOMBRE JEAN CARTIER 11322D M3 ",
+  "precio": "6800.00",
+  "imagen": "./img/productos/hombre/RELOJ DE HOMBRE JEAN CARTIER 11322D M3.jpg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 15,
+  "modelo": "RELOJ DE HOMBRE MISTRAL CHI2052R ",
+  "precio": "25700.00",
+  "imagen": "./img/productos/hombre/RELOJ DE HOMBRE MISTRAL CHI2052R.jpg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 16,
+  "modelo": "RELOJ DE HOMBRE MISTRAL GMI1018 ",
+  "precio": "15600.00",
+  "imagen": "./img/productos/hombre/RELOJ DE HOMBRE MISTRAL GMI1018.jpg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 17,
+  "modelo": "RELOJ DE HOMBRE MISTRAL GMI1112 ",
+  "precio": "9700.00",
+  "imagen": "./img/productos/hombre/RELOJ DE HOMBRE MISTRAL GMI1112.jpg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 18,
+  "modelo": "RELOJ STONE 1051 (HOMBRE)",
+  "precio": "12500.00",
+  "imagen": "./img/productos/hombre/RELOJ STONE 1051 (HOMBRE).jpeg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 19,
+  "modelo": "RELOJ STONE 1051P (HOMBRE)",
+  "precio": "9700.00",
+  "imagen": "./img/productos/hombre/RELOJ STONE 1051P (HOMBRE).jpeg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 20,
+  "modelo": "RELOJ STONE ST1037 (HOMBRE) ",
+  "precio": "11500.00",
+  "imagen": "./img/productos/hombre/RELOJ STONE ST1037 (HOMBRE).jpg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 21,
+  "modelo": "RELOJ STONE ST1062 (HOMBRE) ",
+  "precio": "11200.00",
+  "imagen": "./img/productos/hombre/RELOJ STONE ST1062 (HOMBRE).jpg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 22,
+  "modelo": "RELOJ TOMMY 1782273 (HOMBRE) ",
+  "precio": "35699.00",
+  "imagen": "./img/productos/hombre/RELOJ TOMMY 1782273 (HOMBRE).jpeg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 23,
+  "modelo": "RELOJ TOMMY 1791857 (HOMBRE) ",
+  "precio": "46599.00",
+  "imagen": "./img/productos/hombre/RELOJ TOMMY 1791857 (HOMBRE).jpeg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 24,
+  "modelo": "RELOJ TOMMY 1791910 (HOMBRE) ",
+  "precio": "36999.00",
+  "imagen": "./img/productos/hombre/RELOJ TOMMY 1791910 (HOMBRE).jpeg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 25,
+  "modelo": "RELOJ TRESSA CRYPTO (HOMBRE) ",
+  "precio": "9900.00",
+  "imagen": "./img/productos/hombre/RELOJ TRESSA CRYPTO (HOMBRE).jpg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 26,
+  "modelo": "TRESSA SMARTWATCH SW-135 (HOMBRE) ",
+  "precio": "17200.00",
+  "imagen": "./img/productos/hombre/TRESSA SMARTWATCH SW-135 (HOMBRE).jpg",
+  "genero": "hombre",
+  "stock": 20
+},
+{
+  "id": 27,
+  "modelo": "KOSIUKO KS-840A (MUJER)",
+  "precio": "12900.00",
+  "imagen": "./img/productos/mujer/KOSIUKO KS-840A (MUJER).jpg",
+  "genero": "mujer",
+  "stock": 20
+},
+{
+  "id": 28,
+  "modelo": "RELOJ DE MUJER BLAQUÉ BQ162",
+  "precio": "10800.00",
+  "imagen": "./img/productos/mujer/RELOJ DE MUJER BLAQUÉ BQ162.jpg",
+  "genero": "mujer",
+  "stock": 20
+},
+{
+  "id": 29,
+  "modelo": "RELOJ DE MUJER BLAQUÉ BQ163",
+  "precio": "11600.00",
+  "imagen": "./img/productos/mujer/RELOJ DE MUJER BLAQUÉ BQ163.jpg",
+  "genero": "mujer",
+  "stock": 20
+},
+{
+  "id": 30,
+  "modelo": "RELOJ DE MUJER BLAQUÉ BQ165",
+  "precio": "11200.00",
+  "imagen": "./img/productos/mujer/RELOJ DE MUJER BLAQUÉ BQ165.jpg",
+  "genero": "mujer",
+  "stock": 20
+},
+{
+  "id": 31,
+  "modelo": "RELOJ DE MUJER BLAQUÉ BQ167",
+  "precio": "10800.00",
+  "imagen": "./img/productos/mujer/RELOJ DE MUJER BLAQUÉ BQ167.jpg",
+  "genero": "mujer",
+  "stock": 20
+},
+{
+  "id": 32,
+  "modelo": "RELOJ DE MUJER BLAQUÉ BQ172PA",
+  "precio": "10900.00",
+  "imagen": "./img/productos/mujer/RELOJ DE MUJER BLAQUÉ BQ172PA.jpg",
+  "genero": "mujer",
+  "stock": 20
+},
+{
+  "id": 33,
+  "modelo": "RELOJ DE MUJER KNOCK OUT 1591",
+  "precio": "8700.00",
+  "imagen": "./img/productos/mujer/RELOJ DE MUJER KNOCK OUT 1591.jpg",
+  "genero": "mujer",
+  "stock": 20
+},
+{
+  "id": 34,
+  "modelo": "RELOJ DE MUJER KNOCK OUT 2490",
+  "precio": "9100.00",
+  "imagen": "./img/productos/mujer/RELOJ DE MUJER KNOCK OUT 2490.jpg",
+  "genero": "mujer",
+  "stock": 20
+},
+{
+  "id": 35,
+  "modelo": "RELOJ DE MUJER KNOCK OUT 2495",
+  "precio": "6900.00",
+  "imagen": "./img/productos/mujer/RELOJ DE MUJER KNOCK OUT 2495.jpg",
+  "genero": "mujer",
+  "stock": 20
+},
+{
+  "id": 36,
+  "modelo": "EUROPA SMARTWATCH 4103 (UNISEX)",
+  "precio": "21500.00",
+  "imagen": "./img/productos/unisex/EUROPA SMARTWATCH 4103 (UNISEX).jpg",
+  "genero": "unisex",
+  "stock": 20
+},
+{
+  "id": 37,
+  "modelo": "EUROPA SMARTWATCH 4107 (UNISEX)",
+  "precio": "62900.00",
+  "imagen": "./img/productos/unisex/EUROPA SMARTWATCH 4107 (UNISEX).jpg",
+  "genero": "unisex",
+  "stock": 20
+},
+{
+  "id": 38,
+  "modelo": "SMARTWACHT UNISEX TRESSA SW-141 (UNISEX)",
+  "precio": "24500.00",
+  "imagen": "./img/productos/unisex/SMARTWACHT UNISEX TRESSA SW-141 (UNISEX).jpeg",
+  "genero": "unisex",
+  "stock": 20
+},
+{
+  "id": 39,
+  "modelo": "SMARTWACHT UNISEX TRESSA SW-152 (UNISEX)",
+  "precio": "17800.00",
+  "imagen": "./img/productos/unisex/SMARTWACHT UNISEX TRESSA SW-152 (UNISEX).jpeg",
+  "genero": "unisex",
+  "stock": 20
+},
+{
+  "id": 40,
+  "modelo": "SMARTWATCH SWEET BALANCE (UNISEX)",
+  "precio": "17200.00",
+  "imagen": "./img/productos/unisex/SMARTWATCH SWEET BALANCE (UNISEX).jpg",
+  "genero": "unisex",
+  "stock": 20
+},
+{
+  "id": 41,
+  "modelo": "SMARTWATCH SWEET WELLNESS (UNISEX)",
+  "precio": "16800.00",
+  "imagen": "./img/productos/unisex/SMARTWATCH SWEET WELLNESS (UNISEX).jpg",
+  "genero": "unisex",
+  "stock": 20
+},
+{
+  "id": 42,
+  "modelo": "SMARTWATCH UNISEX TRESSA SW-100",
+  "precio": "15600.00",
+  "imagen": "./img/productos/unisex/SMARTWATCH UNISEX TRESSA SW-100.jpg",
+  "genero": "unisex",
+  "stock": 20
+},
+{
+  "id": 43,
+  "modelo": "SWEET SMART SPORT (UNISEX)",
+  "precio": "21500.00",
+  "imagen": "./img/productos/unisex/SWEET SMART SPORT (UNISEX).jpg",
+  "genero": "unisex",
+  "stock": 20
+},
+{
+  "id": 44,
+  "modelo": "TRESSA SMARTWATCH SW-117 (UNISEX)",
+  "precio": "10700.00",
+  "imagen": "./img/productos/unisex/TRESSA SMARTWATCH SW-117 (UNISEX).jpg",
+  "genero": "unisex",
+  "stock": 20
+},
+{
+  "id": 45,
+  "modelo": "TRESSA SMARTWATCH SW-131 (UNISEX)",
+  "precio": "20800.00",
+  "imagen": "./img/productos/unisex/TRESSA SMARTWATCH SW-131 (UNISEX).jpg",
+  "genero": "unisex",
+  "stock": 20
+},
+{
+  "id": 46,
+  "modelo": "TRESSA SMARTWATCH SW-134 (UNISEX)",
+  "precio": "17300.00",
+  "imagen": "./img/productos/unisex/TRESSA SMARTWATCH SW-134 (UNISEX).jpg",
+  "genero": "unisex",
+  "stock": 20
+},
+{
+  "id": 47,
+  "modelo": "ZAFIRA SMARTWATCH M5V (UNISEX)",
+  "precio": "5100.00",
+  "imagen": "./img/productos/unisex/ZAFIRA SMARTWATCH M5V (UNISEX).jpg",
+  "genero": "unisex",
+  "stock": 20
+}
+]
