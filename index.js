@@ -109,6 +109,7 @@ function agregarAlCarrito(seleccion) {
                     let precio = parseFloat(data[seleccion - 1].precio);
                     carritoLocal.push({
                         id: data[seleccion - 1].id,
+                        imagen: data[seleccion -1].imagen,
                         modelo: data[seleccion - 1].modelo,
                         precio: precio,
                         cantidad: 1
@@ -188,8 +189,8 @@ document.body.append(main);
 let tituloLogo = document.createElement("div");
 tituloLogo.setAttribute('id', 'tituloLogo');
 tituloLogo.innerHTML = `<a id="imgLogo"><img src="./img/logo.png" alt="imgLogo"></a>
-                <h1>Tienda de relojes JS</h1>
-                `;
+                        <h1>Tienda de relojes JS</h1>
+                        `;
 main.append(tituloLogo);
 //contenedor de productos
 let contenedorProductos = document.createElement("div");
@@ -215,9 +216,9 @@ const pedirProductos = async () => {
 }
 //FOOTER
 let footer = document.createElement("footer");
-footer.innerHTML += `<a href="http://www.facebook.com" id="iconsFooter"><img src="./img/facebook-icon.ico" alt="facebook"></a>
-                     <a href="http://www.instagram.com" id="iconsFooter"><img src="./img/instagram-icon.ico" alt="instagram"></a>
-                     <a href="https://web.whatsapp.com/" id="iconsFooter"><img src="./img/whatsapp-icon.ico" alt="whatsapp"></a>
+footer.innerHTML +=  `  <a href="http://www.facebook.com" id="iconsFooter"><img src="./img/facebook-icon.ico" alt="facebook"></a>
+                        <a href="http://www.instagram.com" id="iconsFooter"><img src="./img/instagram-icon.ico" alt="instagram"></a>
+                        <a href="https://web.whatsapp.com/" id="iconsFooter"><img src="./img/whatsapp-icon.ico" alt="whatsapp"></a>
                         `
 document.body.append(footer);
 //CARRITO
@@ -226,23 +227,39 @@ let contenedorCart = document.createElement("div");
 contenedorCart.setAttribute('id', 'cartBody');
 contenedorCart.className = "offcanvas-body";
 cartNavbar.append(contenedorCart);
+
+/* let cantCarrito = document.getElementsByClassName("navbar-toggler-icon");
+let containerCantCarrito = document.createElement("div");
+containerCantCarrito.innerHTML+=` <p>${totalCarrito.length}</p>
+                                `
+cantCarrito.appendChild(containerCantCarrito); */
+
 //ELEMENTOS DEL CARRITO
 function carrito() {
     let cartBody = document.getElementById("cartBody");
     cartBody.innerHTML = "";
     if (carritoLocal.length > 0) {
-        for (const obj of carritoLocal) {
-            cartBody.innerHTML += `<div id="divCart"><h3> ${obj.modelo}</h3>
-                               <p>Precio: \$${Intl.NumberFormat().format(obj.precio)},00</p>
-                               <p><i class="bi bi-plus-circle-fill" onclick="agregarAlCarrito(${obj.id})"></i>${obj.cantidad}<i class="bi bi-dash-circle-fill" onclick="RestarDelCarrito(${obj.id})"></i> </p>
-                               <button class="btn btn-secondary" id="eliminarCarrito" onclick="eliminarDelCarrito(${obj.id})">eliminar</button></div>
-                               `;
+        for (const obj of carritoLocal){
+            cartBody.innerHTML += ` <div id="divCart">
+                                    <img src="${obj.imagen}" class="card-img-top" alt="${obj.modelo}">
+                                    <h3> ${obj.modelo}</h3>
+                                    <p>Precio: \$${Intl.NumberFormat().format(obj.precio)},00</p>
+                                    <p><i class="bi bi-plus-circle-fill" onclick="agregarAlCarrito(${obj.id})"></i>${obj.cantidad}<i class="bi bi-dash-circle-fill" onclick="RestarDelCarrito(${obj.id})"></i> </p>
+                                    <button class="btn btn-secondary" id="eliminarCarrito" onclick="eliminarDelCarrito(${obj.id})">eliminar</button></div>
+                                    `;
             cartNavbar.appendChild(cartBody);
         }
+        calcularTotalCarrito();
+        cartBody.innerHTML += ` <div id= "totalCarrito">
+                                <p>Total: \$${Intl.NumberFormat().format(totalCarrito)} </p>
+                                </div>`
+        cartNavbar.appendChild(cartBody);
+
     } else {
-        cartBody.innerHTML += `<div id="emptyCart">
-                            <img src="./img/emptyCart.png" class="imgEmptyCart" alt="emptyCart">
-                        </div>`;
+        cartBody.innerHTML += ` <div id="emptyCart">
+                                <img src="./img/emptyCart.png" class="imgEmptyCart" alt="emptyCart">
+                                </div>
+                                `;
     }
 }
 //botones carrito
