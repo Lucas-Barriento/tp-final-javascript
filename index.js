@@ -109,7 +109,7 @@ function agregarAlCarrito(seleccion) {
                     let precio = parseFloat(data[seleccion - 1].precio);
                     carritoLocal.push({
                         id: data[seleccion - 1].id,
-                        imagen: data[seleccion -1].imagen,
+                        imagen: data[seleccion - 1].imagen,
                         modelo: data[seleccion - 1].modelo,
                         precio: precio,
                         cantidad: 1
@@ -203,23 +203,39 @@ const pedirProductos = async () => {
     data.forEach((reloj) => {
         let contenedor = document.getElementById("container");
         contenedor.innerHTML += `<div class="card">
-                                <img src="${reloj.imagen}" class="card-img-top" alt="${reloj.modelo}">
-                                <div class="card-body">
-                                <h5 class="card-title">${reloj.modelo}</h5>
-                                <p class="card-text">\$${Intl.NumberFormat().format(reloj.precio)},00</p>
-                                <a href="#" class="btn btn-primary" id="btnCart" onclick="agregarAlCarrito(${reloj.id})">añadir</a>
-                                </div>
-                            </div>`
+                                    <img src="${reloj.imagen}" class="card-img-top" alt="${reloj.modelo}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${reloj.modelo}</h5>
+                                        <p class="card-text">\$${Intl.NumberFormat().format(reloj.precio)},00</p>
+                                        <a href="#" class="btn btn-primary" id="btnCart" onclick="agregarAlCarrito(${reloj.id})">añadir</a>
+                                    </div>
+                                </div>`
         main.append(contenedor);
     }
     )
 }
 //FOOTER
+var currentTime = new Date();
+var year = currentTime.getFullYear()
 let footer = document.createElement("footer");
-footer.innerHTML +=  `  <a href="http://www.facebook.com" id="iconsFooter"><img src="./img/facebook-icon.ico" alt="facebook"></a>
-                        <a href="http://www.instagram.com" id="iconsFooter"><img src="./img/instagram-icon.ico" alt="instagram"></a>
-                        <a href="https://web.whatsapp.com/" id="iconsFooter"><img src="./img/whatsapp-icon.ico" alt="whatsapp"></a>
-                        `
+footer.innerHTML += `   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                            <div class="col-md-4 d-flex align-items-center">
+                                <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                                    <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+                                </a>
+                                <span class="text-muted">© ${year} Tienda de relojes JS, S.A.</span>
+                            </div>
+                            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                                <li class="ms-3"><a class="text-muted" href="http://www.facebook.com" id="iconsFooter"><img src="./img/facebook-icon.ico" alt="facebook"></a></li>
+                                <li class="ms-3"><a class="text-muted" href="http://www.instagram.com" id="iconsFooter"><img src="./img/instagram-icon.ico" alt="instagram"></a></li>
+                                <li class="ms-3"><a class="text-muted" href="https://web.whatsapp.com" id="iconsFooter"><img src="./img/whatsapp-icon.ico" alt="whatsapp"></a></li>
+                            </ul>
+                        </footer>
+`
+{/* <a href="http://www.facebook.com" id="iconsFooter"><img src="./img/facebook-icon.ico" alt="facebook"></a>
+<a href="http://www.instagram.com" id="iconsFooter"><img src="./img/instagram-icon.ico" alt="instagram"></a>
+<a href="https://web.whatsapp.com/" id="iconsFooter"><img src="./img/whatsapp-icon.ico" alt="whatsapp"></a>
+ */}
 document.body.append(footer);
 //CARRITO
 let cartNavbar = document.getElementById("offcanvasNavbar");
@@ -228,24 +244,19 @@ contenedorCart.setAttribute('id', 'cartBody');
 contenedorCart.className = "offcanvas-body";
 cartNavbar.append(contenedorCart);
 
-/* let cantCarrito = document.getElementsByClassName("navbar-toggler-icon");
-let containerCantCarrito = document.createElement("div");
-containerCantCarrito.innerHTML+=` <p>${totalCarrito.length}</p>
-                                `
-cantCarrito.appendChild(containerCantCarrito); */
-
 //ELEMENTOS DEL CARRITO
 function carrito() {
     let cartBody = document.getElementById("cartBody");
     cartBody.innerHTML = "";
     if (carritoLocal.length > 0) {
-        for (const obj of carritoLocal){
+        for (const obj of carritoLocal) {
             cartBody.innerHTML += ` <div id="divCart">
-                                    <img src="${obj.imagen}" class="card-img-top" alt="${obj.modelo}">
-                                    <h3> ${obj.modelo}</h3>
-                                    <p>Precio: \$${Intl.NumberFormat().format(obj.precio)},00</p>
-                                    <p><i class="bi bi-plus-circle-fill" onclick="agregarAlCarrito(${obj.id})"></i>${obj.cantidad}<i class="bi bi-dash-circle-fill" onclick="RestarDelCarrito(${obj.id})"></i> </p>
-                                    <button class="btn btn-secondary" id="eliminarCarrito" onclick="eliminarDelCarrito(${obj.id})">eliminar</button></div>
+                                        <img src="${obj.imagen}" class="card-img-top" alt="${obj.modelo}">
+                                        <h3> ${obj.modelo}</h3>
+                                        <p>Precio: \$${Intl.NumberFormat().format(obj.precio)},00</p>
+                                        <p><i class="bi bi-plus-circle-fill" onclick="agregarAlCarrito(${obj.id})"></i>${obj.cantidad}<i class="bi bi-dash-circle-fill" onclick="RestarDelCarrito(${obj.id})"></i> </p>
+                                        <button class="btn btn-secondary" id="eliminarCarrito" onclick="eliminarDelCarrito(${obj.id})">eliminar</button>
+                                    </div>
                                     `;
             cartNavbar.appendChild(cartBody);
         }
@@ -261,6 +272,14 @@ function carrito() {
                                 </div>
                                 `;
     }
+    //numero de productos en el icono de carrito
+    let cantCarrito = document.getElementById("navbartogglericon");
+    cantCarrito.innerHTML = "";
+    let containerCantCarrito = document.createElement("div");
+    containerCantCarrito.setAttribute('id', 'cartNumber');
+    containerCantCarrito.innerHTML = ` <p>${carritoLocal.length}</p>
+                                    `
+    cantCarrito.appendChild(containerCantCarrito);
 }
 //botones carrito
 let botonVaciar = document.getElementById("btnVaciar");
@@ -310,3 +329,5 @@ function actualizarLocalStorage(local) {
 localStorage.getItem("carritoStorage") && (carritoLocal = JSON.parse(localStorage.getItem("carritoStorage")));
 pedirProductos();
 carrito();
+
+
