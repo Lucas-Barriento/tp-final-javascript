@@ -128,6 +128,7 @@ body{
     bottom: 0px;
     left: 0px;
     right: 0px;
+    color: whitesmoke;
 }
 #totalCarrito p{
     display: flex   ;
@@ -138,10 +139,7 @@ body{
 #cartBody{
     padding-bottom: 0px !important;
 }
-#cartBody img{
-    width: 110px;
-    height: 140px;
-}
+
 #cartNumber {
     background-color: rgb(116, 0, 0);
     border-radius: 50%;
@@ -157,4 +155,35 @@ body{
     padding-top: 4px;
     padding-bottom: 6px;
 
+}
+#containerCart {
+    display: flex;
+    justify-content: space-between;
+    height: 87px;
+}
+
+#containerCart img {
+    width: 50px;
+    height: 60px;
+}
+#textCart {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+}
+#textCart h3,p{
+    font-size: large;
+    margin: 0;
+}
+
+#buttonCart p{
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    justify-content: space-around;
+}
+#btnEnviar,#btnCancelar{
+    background-color:whitesmoke;
+    color: rgb(116, 0, 0);
 }

@@ -49,7 +49,23 @@ function calcularTotalCarrito() {
 
 function pagar() {
     calcularTotalCarrito();
+    document.getElementById("btnPagar").style.display = 'none';
+    document.getElementById("btnVaciar").style.display = 'none';
 
+    cartBody.innerHTML = `  <div id= "totalCarrito">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Ingrese un correo electronico para finalizar la compra</label>
+                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                                </div>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary mb-3" id="btnEnviar">Enviar</button>
+                                    <button type="submit" class="btn btn-primary mb-3" id="btnCancelar">Ahora no</button>
+                                </div>
+                                    <p>Total: \$${Intl.NumberFormat().format(totalCarrito)} </p>
+                            </div>
+                        `
+        cartNavbar.appendChild(cartBody);
+/* 
     let pago;
     if (totalCarrito > 0) {
         var eleccion = prompt(`El total a pagar es: \$${totalCarrito}
@@ -92,7 +108,7 @@ function pagar() {
             timer: 750
         })
     }
-
+ */
 }
 
 
@@ -231,13 +247,10 @@ footer.innerHTML += `   <footer class="d-flex flex-wrap justify-content-between 
                                 <li class="ms-3"><a class="text-muted" href="https://web.whatsapp.com" id="iconsFooter"><img src="./img/whatsapp-icon.ico" alt="whatsapp"></a></li>
                             </ul>
                         </footer>
-`
-{/* <a href="http://www.facebook.com" id="iconsFooter"><img src="./img/facebook-icon.ico" alt="facebook"></a>
-<a href="http://www.instagram.com" id="iconsFooter"><img src="./img/instagram-icon.ico" alt="instagram"></a>
-<a href="https://web.whatsapp.com/" id="iconsFooter"><img src="./img/whatsapp-icon.ico" alt="whatsapp"></a>
- */}
+                    `
+
 document.body.append(footer);
-//CARRITO
+//CARRITO   
 let cartNavbar = document.getElementById("offcanvasNavbar");
 let contenedorCart = document.createElement("div");
 contenedorCart.setAttribute('id', 'cartBody');
@@ -250,17 +263,22 @@ function carrito() {
     cartBody.innerHTML = "";
     if (carritoLocal.length > 0) {
         for (const obj of carritoLocal) {
-            cartBody.innerHTML += ` <div id="divCart">
+            cartBody.innerHTML += ` <div id="containerCart">
                                         <img src="${obj.imagen}" class="card-img-top" alt="${obj.modelo}">
-                                        <h3> ${obj.modelo}</h3>
-                                        <p>Precio: \$${Intl.NumberFormat().format(obj.precio)},00</p>
-                                        <p><i class="bi bi-plus-circle-fill" onclick="agregarAlCarrito(${obj.id})"></i>${obj.cantidad}<i class="bi bi-dash-circle-fill" onclick="RestarDelCarrito(${obj.id})"></i> </p>
-                                        <button class="btn btn-secondary" id="eliminarCarrito" onclick="eliminarDelCarrito(${obj.id})">eliminar</button>
+                                        <div id="textCart">
+                                            <h3> ${obj.modelo}</h3>
+                                            <p>\$${Intl.NumberFormat().format(obj.precio)},00</p>
+                                        </div>
+                                        <div id="buttonCart">
+                                            <p><i class="bi bi-plus-circle-fill" onclick="agregarAlCarrito(${obj.id})"></i>${obj.cantidad}<i class="bi bi-dash-circle-fill" onclick="RestarDelCarrito(${obj.id})"></i> </p>
+                                            <button class="btn btn-secondary" id="eliminarCarrito" onclick="eliminarDelCarrito(${obj.id})">eliminar</button>
+                                        </div>
                                     </div>
                                     `;
             cartNavbar.appendChild(cartBody);
         }
         calcularTotalCarrito();
+        //TOTAL $ DEL CARRITO
         cartBody.innerHTML += ` <div id= "totalCarrito">
                                 <p>Total: \$${Intl.NumberFormat().format(totalCarrito)} </p>
                                 </div>`
@@ -284,7 +302,7 @@ function carrito() {
 //botones carrito
 let botonVaciar = document.getElementById("btnVaciar");
 botonVaciar.addEventListener("click", confirmarVaciar)
-
+//VACIAR CARRITO
 function confirmarVaciar() {
     calcularTotalCarrito();
     if (totalCarrito > 0) {
@@ -330,4 +348,19 @@ localStorage.getItem("carritoStorage") && (carritoLocal = JSON.parse(localStorag
 pedirProductos();
 carrito();
 
+let botonPagar= document.getElementById("btnPagar");
+botonPagar.addEventListener("click",pagar)
 
+//falta que funcione
+let enviar = document.getElementById("btnEnviar");
+enviar.submit = () => {
+    Swal.fire({
+        position: 'center',
+        icon: 'info',
+        title: 'Hemos enviado a tu correo un link para finalizar la compra',
+        iconColor: 'green',
+        showConfirmButton: false,
+        timer: 750
+    })
+    vaciarCarrito();
+}
