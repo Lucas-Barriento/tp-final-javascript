@@ -10,36 +10,6 @@ class Reloj {
 let carritoLocal = [];
 var totalCarrito = 0;
 
-function verCarrito() {
-
-    document.write(`Factura de compra </br>
-    ------------------------------------------------ </br>`);
-
-    for (contador = 0; contador < carritoLocal.length; contador++) {
-        document.write("producto " + (contador + 1) + ":  " + carritoLocal[contador].modelo + ", cantidad: " + carritoLocal[contador].cantidad + ", precio: $" + carritoLocal[contador].precio + "</br>");
-    }
-
-    document.write(`------------------------------------------------ </br>
-    Total: \$${totalCarrito}`);
-    localStorage.clear();
-}
-
-function calcularInteres(cuotas) {
-    switch (cuotas) {
-        case '3':
-            totalCarrito = totalCarrito + (totalCarrito * 0.08);
-            break;
-        case '6':
-            totalCarrito = totalCarrito + (totalCarrito * 0.13);
-            break;
-        case '9':
-            totalCarrito = totalCarrito + (totalCarrito * 0.17);
-            break;
-        default:
-            break;
-    }
-}
-
 function calcularTotalCarrito() {
     totalCarrito = 0;
     for (let index = 0; index < carritoLocal.length; index++) {
@@ -49,57 +19,23 @@ function calcularTotalCarrito() {
 
 function pagar() {
     calcularTotalCarrito();
-    document.getElementById("btnPagar").style.display = 'none';
-    document.getElementById("btnVaciar").style.display = 'none';
-
+    if (totalCarrito > 0) {
+        document.getElementById("btnPagar").style.visibility = 'hidden';
+        document.getElementById("btnVaciar").style.visibility = 'hidden';    
     cartBody.innerHTML = `  <div id= "totalCarrito">
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Ingrese un correo electronico para finalizar la compra</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                                    <input type="email" class="form-control" id="imputMail" placeholder="name@example.com">
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary mb-3" id="btnEnviar">Enviar</button>
-                                    <button type="submit" class="btn btn-primary mb-3" id="btnCancelar">Ahora no</button>
+                                    <button type="submit" class="btn btn-primary mb-3" id="btnEnviar" onclick="enviarPorMail()">Enviar</button>
+                                    <button type="submit" class="btn btn-primary mb-3" id="btnCancelar" onclick="carrito()">Ahora no</button>
                                 </div>
                                     <p>Total: \$${Intl.NumberFormat().format(totalCarrito)} </p>
                             </div>
                         `
         cartNavbar.appendChild(cartBody);
-/* 
-    let pago;
-    if (totalCarrito > 0) {
-        var eleccion = prompt(`El total a pagar es: \$${totalCarrito}
-    Seleccione el medio de pago: 
-    1 - Debito (sin recargo).
-    2 - Credito (financiacion con recargo)`);
-
-        pago = prompt('Ingrese el numero de la tarjeta(5 digitos): ');
-
-        while (pago.length != 5) {
-            pago = prompt('Ingrese el numero de la tarjeta(5 digitos) : ');
-        }
-
-        switch (eleccion) {
-            case '1':
-                alert(`Su pago de \$${totalCarrito} fue aprobado!, a continuacion seras redirigido a la factura de tu compra`)
-                break;
-            case '2':
-                let cuotas = prompt(`Indique como quiere pagar: 
-            1 - 3 cuotas (%8 interes)
-            2 - 6 cuotas (%13 interes)
-            3 - 9 cuotas (%17 interes)`);
-                calcularInteres(cuotas);
-                alert(`Su pago de \$${totalCarrito} (${cuotas} cuotas de \$${totalCarrito / cuotas}) fue aprobado!, a continuacion seras redirigido a la factura de tu compra`)
-                break;
-            default:
-                eleccion = prompt(`El total a pagar es: \$${totalCarrito}
-    Por favor, intente nuevamente. Seleccione el medio de pago: 
-    1 - Debito (sin recargo).
-    2 - Credito (financiacion con recargo)`)
-                break;
-        }
-        verCarrito();
-    } else {
+    }else {
         Swal.fire({
             position: 'center',
             icon: 'info',
@@ -108,7 +44,6 @@ function pagar() {
             timer: 750
         })
     }
- */
 }
 
 
@@ -131,19 +66,20 @@ function agregarAlCarrito(seleccion) {
                         cantidad: 1
                     })
                     actualizarLocalStorage(carritoLocal);
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Producto agregado',
+                        showConfirmButton: false,
+                        timer: 750
+                    })
                 } else {
                     carritoLocal[carritoLocal.findIndex((x) => x.id == seleccion)].precio += parseFloat(data[seleccion - 1].precio);
                     carritoLocal[carritoLocal.findIndex((x) => x.id == seleccion)].cantidad++;
                     actualizarLocalStorage(carritoLocal);
                 }
                 data[seleccion - 1].stock -= 1;
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Producto agregado',
-                    showConfirmButton: false,
-                    timer: 750
-                })
+                
             } else {
                 Swal.fire({
                     position: 'center',
@@ -184,14 +120,6 @@ function RestarDelCarrito(id) {
                 carritoLocal[indice].cantidad--;
                 data[id - 1].stock++;
                 actualizarLocalStorage(carritoLocal);
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Producto quitado',
-                    iconColor: 'red',
-                    showConfirmButton: false,
-                    timer: 750
-                })
             } else {
                 eliminarDelCarrito(id);
             }
@@ -217,13 +145,14 @@ const pedirProductos = async () => {
     const resp = await fetch("./productos.json");
     const data = await resp.json();
     data.forEach((reloj) => {
+        let {imagen,modelo,precio,id}= reloj;
         let contenedor = document.getElementById("container");
         contenedor.innerHTML += `<div class="card">
-                                    <img src="${reloj.imagen}" class="card-img-top" alt="${reloj.modelo}">
+                                    <img src="${imagen}" class="card-img-top" alt="${modelo}">
                                     <div class="card-body">
-                                        <h5 class="card-title">${reloj.modelo}</h5>
-                                        <p class="card-text">\$${Intl.NumberFormat().format(reloj.precio)},00</p>
-                                        <a href="#" class="btn btn-primary" id="btnCart" onclick="agregarAlCarrito(${reloj.id})">añadir</a>
+                                        <h5 class="card-title">${modelo}</h5>
+                                        <p class="card-text">\$${Intl.NumberFormat().format(precio)},00</p>
+                                        <a href="#" class="btn btn-primary" id="btnCart" onclick="agregarAlCarrito(${id})">añadir</a>
                                     </div>
                                 </div>`
         main.append(contenedor);
@@ -259,19 +188,22 @@ cartNavbar.append(contenedorCart);
 
 //ELEMENTOS DEL CARRITO
 function carrito() {
+    document.getElementById("btnPagar").style.visibility = 'visible';
+    document.getElementById("btnVaciar").style.visibility = 'visible';
     let cartBody = document.getElementById("cartBody");
     cartBody.innerHTML = "";
     if (carritoLocal.length > 0) {
         for (const obj of carritoLocal) {
+            let {id, imagen,modelo,precio,cantidad} = obj;
             cartBody.innerHTML += ` <div id="containerCart">
-                                        <img src="${obj.imagen}" class="card-img-top" alt="${obj.modelo}">
+                                        <img src="${imagen}" class="card-img-top" alt="${modelo}">
                                         <div id="textCart">
-                                            <h3> ${obj.modelo}</h3>
-                                            <p>\$${Intl.NumberFormat().format(obj.precio)},00</p>
+                                            <h3> ${modelo}</h3>
+                                            <p>\$${Intl.NumberFormat().format(precio)},00</p>
                                         </div>
                                         <div id="buttonCart">
-                                            <p><i class="bi bi-plus-circle-fill" onclick="agregarAlCarrito(${obj.id})"></i>${obj.cantidad}<i class="bi bi-dash-circle-fill" onclick="RestarDelCarrito(${obj.id})"></i> </p>
-                                            <button class="btn btn-secondary" id="eliminarCarrito" onclick="eliminarDelCarrito(${obj.id})">eliminar</button>
+                                            <p><i class="bi bi-plus-circle-fill" onclick="agregarAlCarrito(${id})"></i>${cantidad}<i class="bi bi-dash-circle-fill" onclick="RestarDelCarrito(${id})"></i> </p>
+                                            <button class="btn btn-secondary" id="eliminarCarrito" onclick="eliminarDelCarrito(${id})">eliminar</button>
                                         </div>
                                     </div>
                                     `;
@@ -302,6 +234,10 @@ function carrito() {
 //botones carrito
 let botonVaciar = document.getElementById("btnVaciar");
 botonVaciar.addEventListener("click", confirmarVaciar)
+
+let botonPagar= document.getElementById("btnPagar");
+botonPagar.addEventListener("click",pagar)
+
 //VACIAR CARRITO
 function confirmarVaciar() {
     calcularTotalCarrito();
@@ -348,19 +284,35 @@ localStorage.getItem("carritoStorage") && (carritoLocal = JSON.parse(localStorag
 pedirProductos();
 carrito();
 
-let botonPagar= document.getElementById("btnPagar");
-botonPagar.addEventListener("click",pagar)
 
-//falta que funcione
-let enviar = document.getElementById("btnEnviar");
-enviar.submit = () => {
-    Swal.fire({
-        position: 'center',
-        icon: 'info',
-        title: 'Hemos enviado a tu correo un link para finalizar la compra',
-        iconColor: 'green',
-        showConfirmButton: false,
-        timer: 750
-    })
-    vaciarCarrito();
+function validarEmail(valor) {
+    return(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(valor));
+
+    }
+function enviarPorMail() {
+    let mail = document.getElementById("imputMail").value;
+    if(validarEmail(mail)){
+        Swal.fire({
+            title: `Enviaremos un link al siguiente mail: ${mail}`,
+            text: "¿Estas de acuerdo?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                vaciarCarrito()
+            }
+        })
+    }
+    else{
+        Swal.fire({
+            icon: 'error',
+            title: 'Por favor ingrese un mail valido',
+            text: '',
+        })
+    };
+    
 }
