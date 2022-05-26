@@ -79,7 +79,6 @@ function agregarAlCarrito(seleccion) {
                     actualizarLocalStorage(carritoLocal);
                 }
                 data[seleccion - 1].stock -= 1;
-                
             } else {
                 Swal.fire({
                     position: 'center',
@@ -171,9 +170,9 @@ footer.innerHTML += `   <footer class="d-flex flex-wrap justify-content-between 
                                 <span class="text-muted">© ${year} Tienda de relojes JS, S.A.</span>
                             </div>
                             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                                <li class="ms-3"><a class="text-muted" href="http://www.facebook.com" id="iconsFooter"><img src="./img/facebook-icon.ico" alt="facebook"></a></li>
-                                <li class="ms-3"><a class="text-muted" href="http://www.instagram.com" id="iconsFooter"><img src="./img/instagram-icon.ico" alt="instagram"></a></li>
-                                <li class="ms-3"><a class="text-muted" href="https://web.whatsapp.com" id="iconsFooter"><img src="./img/whatsapp-icon.ico" alt="whatsapp"></a></li>
+                                <li class="ms-3"><a class="text-muted" href="http://www.facebook.com" id="iconsFooter" target="_blank"><img src="./img/facebook-icon.ico" alt="facebook"></a></li>
+                                <li class="ms-3"><a class="text-muted" href="http://www.instagram.com" id="iconsFooter" target="_blank"><img src="./img/instagram-icon.ico" alt="instagram"></a></li>
+                                <li class="ms-3"><a class="text-muted" href="https://web.whatsapp.com" id="iconsFooter" target="_blank"><img src="./img/whatsapp-icon.ico" alt="whatsapp"></a></li>
                             </ul>
                         </footer>
                     `
@@ -215,7 +214,6 @@ function carrito() {
                                 <p>Total: \$${Intl.NumberFormat().format(totalCarrito)} </p>
                                 </div>`
         cartNavbar.appendChild(cartBody);
-
     } else {
         cartBody.innerHTML += ` <div id="emptyCart">
                                 <img src="./img/emptyCart.png" class="imgEmptyCart" alt="emptyCart">
@@ -231,6 +229,7 @@ function carrito() {
                                     `
     cantCarrito.appendChild(containerCantCarrito);
 }
+
 //botones carrito
 let botonVaciar = document.getElementById("btnVaciar");
 botonVaciar.addEventListener("click", confirmarVaciar)
